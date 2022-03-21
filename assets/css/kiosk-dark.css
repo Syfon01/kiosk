@@ -1,5 +1,5 @@
-.bg-dark-theme{
-  /* background-color: #121212 */
+body{
+  font-family: 'Roboto Condensed', sans-serif;
 }
 .tx-subdued{
   color:#667085;
@@ -25,15 +25,26 @@
   height: 200px;
 }
 .video-fluid {
-  aspect-ratio: 7 / 4;
+  aspect-ratio: 16 / 9;
 }
-
+.paper-1{
+  background-image: url('../img/woman.png');
+  background-repeat:no-repeat;
+  background-size: cover;
+  height:100%;
+}
+.paper-2{
+  background-image: url('../img/mega.png');
+  background-repeat:no-repeat;
+  background-size: cover;
+  height:100%;
+}
 .img-h{
   min-height: 18rem
 }
 @media (max-width: 575.98px) { 
   .main-dark{
-    background-image: url('../img/');
+    background-image: url('../img/bg-kiosk.png');
     background-repeat:no-repeat;
     background-size:auto;
     background-position: center;
