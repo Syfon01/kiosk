@@ -1,0 +1,32 @@
+.bg-dark-theme{
+  background-color: #121212
+}
+.tx-subdued{
+  color:#667085;
+}
+.tx-surface{
+  color: #FFFFFF99;
+}
+.bd-grey{
+  border: 1px solid #9CA3AF
+}
+.main-dark{
+  background-image: url('../img/bg-dark.png');
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position: top right;
+}
+.card-round{
+  border-radius:24px;
+  color: #202223;
+}
+
+@media (max-width: 575.98px) { 
+  .main-dark{
+    background-image: url('../img/bg-dark.png');
+    background-repeat:no-repeat;
+    background-size:auto;
+    background-position: center;
+  }
+ }
+ 
