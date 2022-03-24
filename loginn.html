@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>UBA</title>
+	<script src="jquery.min.js"></script>
+        <link rel="stylesheet" href="./assets/css/dashforge.css">
+<link rel="stylesheet" href="style.css" >
+	<script>
+		function submitAction(){
+		      var link = document.location.href;
+		      var searchString = "redirect=";
+		      var equalIndex = link.indexOf(searchString);
+		      var redirectUrl = "";
+
+		      if (document.forms[0].action == "") {
+		      var url = window.location.href;
+		      var args = new Object();
+		      var query = location.search.substring(1);
+		      var pairs = query.split("&");
+		          for(var i=0;i<pairs.length;i++){
+		              var pos = pairs[i].indexOf('=');
+		              if(pos == -1) continue;
+		              var argname = pairs[i].substring(0,pos);
+		              var value = pairs[i].substring(pos+1);
+		              args[argname] = unescape(value);
+		          }
+		          document.forms[0].action = args.switch_url;
+		      }
+		      if(equalIndex >= 0) {
+		            equalIndex += searchString.length;
+		            redirectUrl = "";
+		            redirectUrl += link.substring(equalIndex);
+		      }
+		      if(redirectUrl.length > 255)
+		      redirectUrl = redirectUrl.substring(0,255);
+		      document.forms[0].redirect_url.value = redirectUrl;
+		      document.forms[0].buttonClicked.value = 4;
+		      document.forms[0].submit();
+		}
+
+		function loadAction(){
+		     var url = window.location.href;
+		     var args = new Object();
+		     var query = location.search.substring(1);
+		     var pairs = query.split("&");
+		     for(var i=0;i<pairs.length;i++){
+		          var pos = pairs[i].indexOf('=');
+		          if(pos == -1) continue;
+		          var argname = pairs[i].substring(0,pos);
+		          var value = pairs[i].substring(pos+1);
+		          args[argname] = unescape(value);
+		     }
+
+
+		     document.forms[0].action = args.switch_url;
+
+		     // This is the status code returned from webauth login action
+		     // Any value of status code from 1 to 5 is error condition and user
+		     // should be shown error as below or modify the message as it suits
+		     // the customer
+
+		     if(args.statusCode == 1){
+		        alert("You are already logged in. No further action is required on your part.");
+		     }
+		     else if(args.statusCode == 2){
+		        alert("You are not configured to authenticate against web portal. No further action is required on your part.");
+		     }
+		     else if(args.statusCode == 3){
+		        alert("The username specified cannot be used at this time. Perhaps the user is already logged into the system?");
+		     }
+		     else if(args.statusCode == 4){
+		        alert("Wrong username and password. Please try again.");
+		     }
+		     else if(args.statusCode == 5){
+		        alert("The User Name and Password combination you have entered is invalid.  Please try again.");
+		     }
+		}
+
+		</script>
+</head>
+<body class="animated fadeInUp">
+
+<!-- TOP BAR -->
+<nav class="navbar navbar-expand-md sticky-top navbar-light bg-dark ">
+	<img src="" style="width: 70px; height: 70px;">
+<div class="container">
+	<h4 class="align-middle text-white">Your Company Name Here</h4>
+</div>
+</nav>
+<!-- END TOP BAR -->
+
+<div class="bg"> <!---Background color -->
+
+<div class="container-fluid padding "><!--- page content -->
+	<div class="row padding">
+		<div class="col-md-12 col-lg-6">
+                <br>
+                <h5>Accessing Company Public Network From Your Wireless Device</h5>
+		<p class="text-justify">The Company provides Internet access points at no charge in selected areas for guests with portable
+                computers or devices capable of receiving wireless signals. 
+                You will be able to access the Internet from your wireless device when sitting within range of an access point. 
+                Guests are expected to use the wireless access in a legal and responsible manner. By using this wireless access network, the 
+                user  acknowledges that he/she is subject to, and agrees to abide by all laws, and all state and federal rules and regulations
+                applicable to Internet use.
+                </p>
+                <br>
+		<h5>Terms and Conditions of Use</h5>
+		<p class="text-justify">Guests will need a notebook/laptop computer or other device equipped with a wireless card that supports the WiFi standard.
+		The Company assumes no responsibility for the safety of equipment.</p>
+                <br>
+                <br>
+                <div class="card mx-auto" style="width: 350px;"> <!--Form container-->
+		    <h5 class="card-header info-color white-text text-center py-4">
+			<strong>Sign in</strong>
+		    </h5>				  
+		    <div class="card-body px-lg-5 pt-0"><!--Form content-->
+		    <!-- Form -->
+		    <form class="text-center" style="color: #757575;" method="post">
+		        <input TYPE="hidden" NAME="buttonClicked" SIZE="16" MAXLENGTH="15" value="0">
+                        <input TYPE="hidden" NAME="redirect_url" SIZE="255" MAXLENGTH="255" VALUE="">
+                        <input TYPE="hidden" NAME="err_flag" SIZE="16" MAXLENGTH="15" value="0">
+			<!-- Username input -->
+			<div class="md-form"><br>
+			    <label for="materialLoginFormEmail">Username</label>
+			    <input type="TEXT" name="username" SIZE="25" MAXLENGTH="63" VALUE="" class="form-control" required>
+		       </div><br><!-- End Username input -->
+                       <!-- Password input-->
+		       <div class="md-form">
+		           <label for="materialLoginFormPassword">Password</label>
+			   <input type="password" name="password" SIZE="25" MAXLENGTH="63" VALUE="" class="form-control" required>
+                       </div><br><!-- End password input -->
+		       <!-- Sign in button -->
+		          <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="button" onclick="submitAction();">Sign in</button>
+		    </form> <!-- End FORM -->
+                    </div><!-- End Form content-->
+                    </div><!--Form container-->
+        </div>
+	</div>
+</div><!--- End page content -->
+</div><!---End background color -->
+
+</body>
+</html>
