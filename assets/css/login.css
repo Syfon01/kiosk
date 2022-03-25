@@ -35,4 +35,53 @@
     background-size:auto;
     background-position: center;
   }
+  .neg-mar{
+    margin-left:0px!important;
+  }
+  .bg-uba{
+    background-image: url('../img/uba-country.png');
+    background-repeat:no-repeat;
+    background-size: contain;
+    height:30vh!important;
+    /* margin-top:-50px; */
+  }
+  .vert-login{
+    /* margin: 0; */
+    position: absolute;
+    top: 0%!important;
+    -ms-transform: translateY(0%);
+    transform: translateY(0%)!important;
+  }
  }
+
+ // Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 1100.98px) { 
+  .bg-uba{
+    background-image: url('../img/uba-country.jpg');
+    background-repeat:no-repeat;
+    background-size: cover;
+    height:100%;
+  }
+}
+
+
+ .bg-uba{
+  background-image: url('../img/uba-country.png');
+  background-repeat:no-repeat;
+  background-size: contain;
+  height:100vh;
+  /* margin-top:-50px; */
+}
+.video-fluid {
+  aspect-ratio: 16 / 9;
+}
+.vert-login{
+  /* margin: 0; */
+  position: absolute;
+  top: 5%;
+  -ms-transform: translateY(50%);
+  transform: translateY(20%);
+}
+.neg-mar{
+  margin-left:-50px;
+}
